@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!-- KanjiIndexDefinition: Uncomment if you use kanji name fields for Japanese.
+
+  <index
+      desc="Covering index for search by name; need subtype to know whether name is relevant"
+      name="CompanyNameK1"
+      unique="true">
+    <indexcol
+        keyposition="1"
+        name="NameKanji"/>
+    <indexcol
+        keyposition="2"
+        name="Subtype"/>
+    <indexcol
+        keyposition="3"
+        name="Retired"/>
+    <indexcol
+        keyposition="4"
+        name="ID"/>
+  </index> -->
+<internalExtension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="Contact">
+  <foreignkey-override
+    desc="Primary address associated with the contact."
+    importableagainstexistingobject="false"
+    name="PrimaryAddress"
+    nullok="true"
+    triggersValidation="true"/>
+  <implementsInterface
+    iface="gw.api.contact.ContactLifecycle"
+    impl="gw.api.contact.PCContactLifecycle"/>
+  <implementsInterface
+    iface="gw.api.history.CustomHistory"
+    impl="gw.api.history.ContactCustomHistoryImpl"/>
+  <implementsInterface
+    iface="com.guidewire.pc.domain.contact.PCContactPublicMethods"
+    impl="com.guidewire.pc.domain.contact.impl.ContactCoreExtMethodsImpl"/>
+  <implementsInterface
+    iface="com.guidewire.pc.domain.personaldata.PinnableDomainMethods"
+    impl="com.guidewire.pc.domain.personaldata.ContactPinnableAdapter"/>
+  <implementsEntity
+    adapter="com.guidewire.pc.domain.purge.ContactInfoAdapter"
+    name="RootInfo"/>
+  <implementsEntity
+    name="Extractable"/>
+  <column
+    default="0"
+    desc="Number of Accounts on which this Contact is the AccountHolder."
+    name="AccountHolderCount"
+    nullok="false"
+    setterScriptability="doesNotExist"
+    type="integer"/>
+  <column
+    desc="Date and time of last update"
+    exportable="false"
+    name="LastUpdateTime"
+    nullok="true"
+    setterScriptability="hidden"
+    type="datetime"/>
+  <column
+    desc="Temporary date and time of last update; will eventually be copied to the LastUpdateTime during commit"
+    exportable="false"
+    getterScriptability="hidden"
+    name="TemporaryLastUpdateTime"
+    nullok="true"
+    setterScriptability="hidden"
+    type="datetime"/>
+  <column
+    desc="Application assigned ID used as ABUID when ABUID is null"
+    name="ExternalID"
+    nullok="true"
+    type="shorttext"/>
+  <searchColumn
+    desc="Primary Address City, this is searchColumn for City on Address entity"
+    name="CityDenorm"
+    sourceColumn="CityDenorm"
+    sourceForeignKey="PrimaryAddress">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </searchColumn>
+  <searchColumn
+    desc="Primary Address Postal code, this is searchColumn for Postal code on Address entity"
+    name="PostalCodeDenorm"
+    sourceColumn="PostalCodeDenorm"
+    sourceForeignKey="PrimaryAddress">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </searchColumn>
+  <searchTypekey
+    desc="Primary Address State, this is denormalized column for State on Address entity"
+    name="State"
+    sourceForeignKey="PrimaryAddress"
+    sourceTypekey="State">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </searchTypekey>
+  <searchTypekey
+    desc="Primary Address Country, this is denormalized column for Country on Address entity"
+    name="Country"
+    sourceForeignKey="PrimaryAddress"
+    sourceTypekey="Country">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </searchTypekey>
+  <typekey
+    allowInitialValueForUpgrade="true"
+    desc="Preferred Settlement Currency"
+    name="PreferredSettlementCurrency"
+    nullok="true"
+    typelist="Currency">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </typekey>
+  <dbcheckbuilder
+    className="com.guidewire.pc.domain.contact.dbchecks.ContactABUIDDBCheckBuilder"/>
+  <remove-index
+    name="PrimaryAddress"/>
+  <index
+    desc="index to help performance on assign by proximity, this should replace the backing index"
+    name="PCPrimaryAddress"
+    unique="true">
+    <indexcol
+      keyposition="1"
+      name="PrimaryAddressID"/>
+    <indexcol
+      keyposition="2"
+      name="Retired"/>
+    <indexcol
+      keyposition="3"
+      name="Subtype"/>
+    <indexcol
+      keyposition="4"
+      name="AccountHolderCount"/>
+    <indexcol
+      keyposition="5"
+      name="ID"/>
+  </index>
+  <implementsEntity
+    name="OverlapTable"/>
+</internalExtension>

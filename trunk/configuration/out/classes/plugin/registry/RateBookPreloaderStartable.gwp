@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<plugin
+  interface="IStartablePlugin"
+  name="RateBookPreloaderStartable">
+  <plugin-gosu
+    gosuclass="gw.plugin.rateflow.RateBookPreloaderStartable"/>
+</plugin>

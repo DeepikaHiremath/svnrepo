@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../../../pcf.xsd">
+  <ListViewPanel
+    id="ProductSelectionLV">
+    <Require
+      name="productOffers"
+      type="ProductSelection[]"/>
+    <Require
+      name="account"
+      type="Account"/>
+    <Require
+      name="producerSelection"
+      type="ProducerSelection"/>
+    <Require
+      name="createSingle"
+      type="boolean"/>
+    <Require
+      name="quoteType"
+      type="QuoteType"/>
+    <Require
+      name="uiHelper"
+      type="gw.web.job.submission.NewSubmissionUIHelper"/>
+    <Variable
+      initialValue="false"
+      name="createMultiple"
+      type="boolean"/>
+    <RowIterator
+      editable="true"
+      elementName="productOffer"
+      value="productOffers">
+      <Row>
+        <LinkCell
+          align="center"
+          id="Select"
+          visible="createSingle"
+          width="75">
+          <Link
+            action="gw.web.job.submission.NewSubmissionUIHelper.createOneSubmission(productOffer, producerSelection, account, quoteType)"
+            available="uiHelper.isProductOfferSelectable(account, productOffer)"
+            id="addSubmission"
+            label="displaykey.Web.Submission.Products.Select"
+            styleClass="miniButton"
+            visible="productOffer.ProductSelectionStatus == &quot;Available&quot; || productOffer.ProductSelectionStatus == &quot;AutoDeclined&quot;"/>
+        </LinkCell>
+        <RangeCell
+          align="left"
+          available="uiHelper.isProductOfferSelectable(account, productOffer)"
+          desc="f"
+          editable="true"
+          id="NumToCreate"
+          label="displaykey.Web.Submission.Products.NumberToCreate"
+          value="productOffer.NumToCreate"
+          valueRange="gw.web.job.submission.NewSubmissionUIHelper.makeNumberRange(productOffer.MaxCreate)"
+          valueVisible="productOffer.ProductSelectionStatus == &quot;Available&quot; || productOffer.ProductSelectionStatus == &quot;AutoDeclined&quot;"
+          visible="!createSingle"/>
+        <Cell
+          align="left"
+          id="Name"
+          label="displaykey.Web.SubmissionManagerLV.Name"
+          value="productOffer.Product.Name"/>
+        <Cell
+          align="left"
+          id="Description"
+          label="displaykey.Web.SubmissionManagerLV.Description"
+          value="productOffer.Product.Description"/>
+        <Cell
+          align="left"
+          id="Status"
+          label="displaykey.Web.SubmissionManagerLV.Status"
+          value="productOffer.ProductSelectionStatus"/>
+        <Cell
+          align="left"
+          id="MaxCreate"
+          label="displaykey.Web.Submission.Products.MaxToCreate"
+          value="productOffer.MaxCreate"
+          visible="!createSingle"/>
+      </Row>
+    </RowIterator>
+  </ListViewPanel>
+</PCF>

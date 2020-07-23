@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<extension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="ContactContact">
+  <typekey-override
+    desc="Relationship between the two contacts."
+    name="Relationship"
+    nullok="false">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </typekey-override>
+  <foreignkey-override
+    desc="&quot;RelatedContactID&quot; is the &quot;Relationship&quot; of &quot;SourceContactID&quot;."
+    importableagainstexistingobject="false"
+    name="RelatedContact"
+    nullok="false">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </foreignkey-override>
+  <foreignkey-override
+    desc="&quot;SourceContactID&quot; has &quot;RelatedContactID&quot; as &quot;Relationship&quot;."
+    importableagainstexistingobject="false"
+    name="SourceContact"
+    nullok="false">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </foreignkey-override>
+  <implementsEntity
+    name="Obfuscatable"/>
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.api.obfuscation.UnsupportedObfuscator"/>
+</extension>

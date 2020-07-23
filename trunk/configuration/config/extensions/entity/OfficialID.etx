@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<extension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="OfficialID">
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.personaldata.obfuscation.OfficialIDObfuscator"/>
+  <column-override
+    desc="This official id's value, such as a social security number or drivers' license number."
+    name="OfficialIDValue"
+    nullok="true"
+    type="shorttext">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <typekey-override
+    desc="The type of this official id."
+    name="OfficialIDType"
+    nullok="false">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </typekey-override>
+  <typekey-override
+    desc="Jurisdiction."
+    name="State"
+    nullok="true">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </typekey-override>
+</extension>

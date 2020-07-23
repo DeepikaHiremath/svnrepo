@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="Policy">
+  <typekey-override
+    default="en_US"
+    desc="The policy's preferred language"
+    name="PrimaryLanguage"
+    nullok="true"/>
+  <typekey-override
+    default="en_US"
+    desc="The policy's preferred locale"
+    name="PrimaryLocale"
+    nullok="true"/>
+  <index
+    desc="Performance index for consistency check on PolicyLine by PatternCode"
+    expectedtobecovering="true"
+    name="PolProdCodePerf"
+    unique="true">
+    <indexcol
+      keyposition="1"
+      name="ProductCode"/>
+    <indexcol
+      keyposition="2"
+      name="ID"/>
+  </index>
+</extension>

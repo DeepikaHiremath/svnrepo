@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../../pcf.xsd">
+  <Screen
+    id="GroupSearchPickerScreen">
+    <Require
+      name="excludeGroup"
+      type="Group"/>
+    <Require
+      name="org"
+      type="Organization"/>
+    <SearchPanel
+      criteriaName="searchCriteria"
+      resultsName="groups"
+      search="searchCriteria.validateAndSearch()"
+      searchCriteria="gw.web.admin.NewGroupUIHelper.initializeSearchCriteria(org)"
+      searchResultsType="GroupQuery">
+      <PanelRef
+        def="GroupSearchDV(searchCriteria)"/>
+      <PanelRef
+        def="GroupSearchPickerResultsLV(groups, excludeGroup)">
+        <TitleBar
+          appendListViewPaging="true"
+          title="displaykey.Web.Search.Results"/>
+        <Toolbar/>
+      </PanelRef>
+    </SearchPanel>
+  </Screen>
+</PCF>

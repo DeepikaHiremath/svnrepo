@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<entity
+  xmlns="http://guidewire.com/datamodel"
+  desc="For when there is more than one contact instance for an ABUID"
+  entity="PersonalDataContactDestructionRequest"
+  loadable="false"
+  platform="true"
+  subpackage="personaldata"
+  table="contactdestructionreq"
+  type="editable">
+  <column
+    desc="The public ID of the contact."
+    name="ContactPublicID"
+    nullok="false"
+    type="publicid"/>
+  <column
+    name="DestructionDate"
+    nullok="true"
+    setterScriptability="hidden"
+    type="datetime"/>
+  <typekey
+    default="New"
+    desc="The current status of the destruction request"
+    name="Status"
+    nullok="false"
+    setterScriptability="hidden"
+    typelist="ContactDestructionStatus"/>
+  <foreignkey
+    columnName="PDDestructionRequest"
+    fkentity="PersonalDataDestructionRequest"
+    name="PersonalDataDestructionRequest"
+    nullok="false"
+    setterScriptability="hidden"/>
+  <index
+    desc='There should only be one effective request for the destruction for each "contact"'
+    name="uniquePublicIDReq"
+    unique="true">
+    <indexcol
+      keyposition="1"
+      name="ContactPublicID"/>
+    </index>
+</entity>

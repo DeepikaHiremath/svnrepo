@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<gx-model type="entity.PolicyLocation" xmlns="http://guidewire.com/gx">
+  <includes>
+    <include path="AccountLocation" type="entity.AccountLocation" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.account.accountlocationmodel"/>
+  </includes>
+</gx-model>

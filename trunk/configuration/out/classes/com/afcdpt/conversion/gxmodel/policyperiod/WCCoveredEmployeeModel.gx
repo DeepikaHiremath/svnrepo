@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<gx-model type="entity.WCCoveredEmployee" xmlns="http://guidewire.com/gx">
+  <includes>
+    <include path="AuditedAmount" type="java.lang.Integer" propertyInclusionType="NORMAL"/>
+    <include path="BasisAmount" type="java.lang.Integer" propertyInclusionType="NORMAL"/>
+    <include path="BeanVersion" type="java.lang.Integer" propertyInclusionType="NORMAL"/>
+    <include path="ClassCode.Code" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="LocationWM" type="entity.PolicyLocation" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.policyperiod.policylocationmodel"/>
+    <include path="NumEmployees" type="java.lang.Integer" propertyInclusionType="NORMAL"/>
+    <include path="SpecialCov.Code" type="java.lang.String" propertyInclusionType="NORMAL"/>
+  </includes>
+</gx-model>

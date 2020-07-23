@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<delegate
+  xmlns="http://guidewire.com/datamodel"
+  name="Obfuscatable"
+  platform="true"
+  subpackage="personaldata">
+  <column
+    default="false"
+    desc="Flag to let us know if the bean has been obfuscated."
+    name="ObfuscatedInternal"
+    nullok="false"
+    setterScriptability="doesNotExist"
+    type="bit"/>
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.api.obfuscation.UnsupportedObfuscatorDelegate"/>
+  <fulldescription><![CDATA[For the delegate Obfuscatable you must provide an implementation for the Obfuscator interface]]></fulldescription>
+</delegate>

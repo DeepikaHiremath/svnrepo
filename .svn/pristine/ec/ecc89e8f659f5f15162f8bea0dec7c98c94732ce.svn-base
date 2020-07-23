@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<internalExtension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="OfficialID">
+  <dbcheckbuilder
+    className="com.guidewire.pc.domain.contact.dbchecks.OfficialIDDBCheckBuilder"/>
+  <implementsEntity
+    name="Extractable"/>
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.personaldata.obfuscation.OfficialIDObfuscator"/>
+</internalExtension>

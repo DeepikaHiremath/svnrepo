@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="ContactAddress">
+  <foreignkey-override
+    desc="Associated address."
+    name="Address"
+    nullok="false"
+    triggersValidation="true">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </foreignkey-override>
+  <foreignkey-override
+    desc="Associated contact."
+    name="Contact"
+    nullok="false">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </foreignkey-override>
+  <implementsEntity
+    name="Obfuscatable"/>
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.api.obfuscation.UnsupportedObfuscator"/>
+</extension>

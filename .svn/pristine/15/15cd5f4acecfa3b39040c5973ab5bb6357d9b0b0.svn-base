@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<extension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="AccountLocation">
+  <column-override
+    default="true"
+    desc="Determines whether or not the location is available to be newly added to submissions"
+    name="Active"
+    nullok="false"
+    type="bit">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <column-override
+    desc="The number of employees at this location"
+    name="EmployeeCount"
+    nullok="true"
+    type="nonnegativeinteger">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <column-override
+    desc="The custom location code specified by customer"
+    name="LocationCode"
+    nullok="true"
+    type="shorttext">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <column-override
+    desc="Shorthand name for this location"
+    name="LocationName"
+    nullok="true"
+    type="shorttext">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <column-override
+    desc="The location number of this location"
+    name="LocationNum"
+    nullok="false"
+    type="integer">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </column-override>
+  <typekey-override
+    desc="The country associated with this phone number."
+    name="PhoneCountry"
+    nullok="true">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </typekey-override>
+  <column-override
+    desc="Phone"
+    name="Phone"
+    nullok="true"
+    type="phone">
+    <columnParam
+      name="phonecountrycodeProperty"
+      value="PhoneCountry"/>
+    <columnParam
+      name="extensionProperty"
+      value="PhoneExtension"/>
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <column-override
+    desc="Phone extension"
+    name="PhoneExtension"
+    nullok="true"
+    type="varchar">
+    <columnParam
+      name="size"
+      value="60"/>
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <column-override
+    default="false"
+    desc="Is a non-specific location."
+    name="NonSpecific"
+    nullok="true"
+    type="bit">
+    <tag
+      name="PersonalData"
+      value="ObfuscateDefault"/>
+  </column-override>
+  <implementsEntity
+    name="Obfuscatable"/>
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.api.obfuscation.UnsupportedObfuscator"/>
+</extension>

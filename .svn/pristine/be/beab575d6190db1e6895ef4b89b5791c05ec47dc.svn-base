@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<extension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="PCOfficialID">
+  <column-override
+    desc="The pattern defining what kind of OfficialID this is"
+    name="PatternCode"
+    nullok="false"
+    type="patterncode">
+    <tag
+      name="PersonalData"
+      value="ObfuscateUnique"/>
+  </column-override>
+  <implementsEntity
+    name="Obfuscatable"/>
+  <implementsInterface
+    iface="gw.api.obfuscation.Obfuscator"
+    impl="gw.personaldata.obfuscation.PCOfficialIDObfuscator"/>
+</extension>

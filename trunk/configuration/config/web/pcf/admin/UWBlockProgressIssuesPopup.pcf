@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <Popup
+    canEdit="false"
+    countsAsWork="false"
+    id="UWBlockProgressIssuesPopup"
+    title="displaykey.Web.Job.Warning.UWIssue.ApprovalRequired">
+    <LocationEntryPoint
+      signature="UWBlockProgressIssuesPopup(policyPeriod : PolicyPeriod, jobWizardHelper : web.job.JobWizardHelper, blockingPoint : UWIssueBlockingPoint, blockingIssues : entity.UWIssue[])"/>
+    <Variable
+      name="jobWizardHelper"
+      type="web.job.JobWizardHelper"/>
+    <Variable
+      name="policyPeriod"
+      type="PolicyPeriod"/>
+    <Variable
+      name="blockingIssues"
+      type="entity.UWIssue[]"/>
+    <Variable
+      name="blockingPoint"
+      type="UWIssueBlockingPoint"/>
+    <Screen
+      id="IssuesScreen">
+      <TitleBar
+        id="PreQuoteIssueTitle"
+        title="gw.web.line.common.UWBlockProgressIssuesHelper.titleForBlockingPoint(blockingPoint)"/>
+      <Toolbar>
+        <ToolbarButton
+          action="jobWizardHelper.goToRiskAnalysisStep(policyPeriod.Job)"
+          available="not policyPeriod.PolicyTerm.CheckArchived"
+          id="DetailsButton"
+          label="displaykey.Web.Job.Warning.UWIssue.Details"/>
+      </Toolbar>
+      <DetailViewPanel
+        id="ApproveDV">
+        <InputColumn>
+          <Label
+            label="gw.web.line.common.UWBlockProgressIssuesHelper.headerForBlockingPoint(blockingPoint)"/>
+          <InputIterator
+            elementName="issue"
+            id="issues"
+            value="blockingIssues.partition(\ u -&gt; u.ShortDescription ).Values.toTypedArray()">
+            <TextInput
+              id="ShortDescriptionAndSize"
+              numCols="60"
+              outputConversion="gw.web.line.common.UWBlockProgressIssuesHelper.descriptionAndCount(VALUE)"
+              required="false"
+              value="issue"/>
+          </InputIterator>
+        </InputColumn>
+      </DetailViewPanel>
+    </Screen>
+  </Popup>
+</PCF>

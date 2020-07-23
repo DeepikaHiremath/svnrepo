@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../pcf.xsd">
+  <ToolbarButtonSet
+    id="UserDetailToolbarButtonSet">
+    <Require
+      name="user"
+      type="User"/>
+    <EditButtons
+	  editVisible="not user.Contact.Obfuscated or perm.System.editobfuscatedusercontact"
+      updateVisible="not user.Contact.Obfuscated or perm.System.editobfuscatedusercontact"/>
+    <ToolbarButton
+      action="gw.api.admin.BaseAdminUtil.deleteUser(user); Admin.go()"
+      available="user.SafeToDelete and (not user.Contact.Obfuscated or perm.System.editobfuscatedusercontact)"
+      confirmMessage="displaykey.Web.Admin.UserDetail.DeleteConfirm"
+      hideIfEditable="true"
+      id="UserDetailToolbarButtons_DeleteUserButton"
+      label="displaykey.Button.DeleteUser"
+      shortcut="U"
+      visible="perm.System.userdelete and (not user.Contact.Obfuscated or perm.System.editobfuscatedusercontact)"/>
+  </ToolbarButtonSet>
+</PCF>

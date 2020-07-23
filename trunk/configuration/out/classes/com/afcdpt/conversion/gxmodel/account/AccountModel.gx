@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<gx-model type="entity.Account" xmlns="http://guidewire.com/gx">
+  <includes>
+    <include path="AccountHolderContact" type="entity.Contact" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.account.contactmodel"/>
+    <include path="AccountLocations[]" type="entity.AccountLocation" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.account.accountlocationmodel"/>
+    <include path="AccountNumber" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="AccountOrgType" type="typekey.AccountOrgType" propertyInclusionType="NORMAL"/>
+    <include path="BusOpsDesc" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="IndustryCode.Code" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="PrimaryLocation" type="entity.AccountLocation" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.account.accountlocationmodel"/>
+    <include path="ProducerCodes[].ProducerCode.Code" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="ServiceTier" type="typekey.CustomerServiceTier" propertyInclusionType="NORMAL"/>
+  </includes>
+</gx-model>

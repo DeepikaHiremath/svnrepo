@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<plugin
+  interface="DomainGraphSupportPlugin"
+  name="DomainGraphSupportPlugin">
+  <plugin-gosu
+    gosuclass="gw.plugin.purge.impl.PCDomainGraphSupportPlugin"/>
+</plugin>

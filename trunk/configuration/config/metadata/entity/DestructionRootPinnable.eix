@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<internalExtension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="DestructionRootPinnable">
+  <implementsInterface
+    iface="com.guidewire.pc.domain.personaldata.PinnableDomainMethods"
+    impl="com.guidewire.pc.domain.personaldata.UnsupportedPinnableDomainMethods"/>
+  <events>
+    <event
+      description="Event fired to notify external system this entity has been purged for personal data reasons"
+      name="PersonalDataPurge"/>
+  </events>
+</internalExtension>

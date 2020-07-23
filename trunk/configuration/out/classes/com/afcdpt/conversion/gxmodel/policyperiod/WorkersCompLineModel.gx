@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<gx-model type="entity.WorkersCompLine" xmlns="http://guidewire.com/gx">
+  <includes>
+    <include path="Jurisdictions[]" type="entity.WCJurisdiction" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.policyperiod.wcjurisdictionmodel"/>
+    <include path="WCCoveredEmployees[]" type="entity.WCCoveredEmployee" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.policyperiod.wccoveredemployeemodel"/>
+  </includes>
+</gx-model>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<gx-model type="entity.Contact" xmlns="http://guidewire.com/gx">
+  <includes>
+    <include path="(entity-Person).FirstName" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="(entity-Person).LastName" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="EmailAddress1" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="EmailAddress2" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="FaxPhone" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="Name" type="java.lang.String" propertyInclusionType="NORMAL"/>
+    <include path="PrimaryAddress" type="entity.Address" propertyInclusionType="NORMAL" model="com.afcdpt.conversion.gxmodel.account.addressmodel"/>
+    <include path="Subtype" type="typekey.Contact" propertyInclusionType="NORMAL"/>
+    <include path="WorkPhone" type="java.lang.String" propertyInclusionType="NORMAL"/>
+  </includes>
+</gx-model>

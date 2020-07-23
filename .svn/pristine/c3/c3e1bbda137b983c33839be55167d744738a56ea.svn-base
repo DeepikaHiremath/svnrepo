@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<entity
+  xmlns="http://guidewire.com/datamodel"
+  desc="DataHub integration for personal data purge"
+  entity="ETLPurgedRoot"
+  extendable="false"
+  loadable="false"
+  subpackage="personaldata"
+  table="etlpurgedroot"
+  type="editable">
+  <column
+    desc="The type of the purged root."
+    name="EntityType"
+    nullok="false"
+    type="shorttext"/>
+  <column
+    desc="The publicID of the purged root."
+    name="PurgedPublicID"
+    nullok="false"
+    type="shorttext"/>
+  <column
+    desc="The datetime the root was purged."
+    name="PurgeDate"
+    nullok="false"
+    type="datetime"/>
+  <column
+    desc="Attribute name related to the purged root."
+    name="AttributeName"
+    nullok="true"
+    type="shorttext"/>
+  <column
+    desc="The value of the attribute name for the purged root."
+    name="AttributeValue"
+    nullok="true"
+    type="shorttext"/>
+</entity>
