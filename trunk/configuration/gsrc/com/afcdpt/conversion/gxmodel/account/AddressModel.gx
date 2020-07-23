@@ -10,6 +10,6 @@
     <include path="PostalCode" type="java.lang.String" propertyInclusionType="NORMAL"/>
     <include path="State" type="typekey.State" propertyInclusionType="NORMAL"/>
     <include path="Subtype" type="typekey.Address" propertyInclusionType="NORMAL"/>
-    <include path="UpdateTime" type="java.util.Date" propertyInclusionType="NORMAL"/>
+
   </includes>
 </gx-model>
